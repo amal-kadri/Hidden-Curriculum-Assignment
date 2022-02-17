@@ -4,13 +4,19 @@ library(knitr)
 library(stargazer)
 library(magrittr)
 library(here)
-file.path("/Users/amalkadri/Documents/Causal Inference/hidden-curriculum")
+
+#Set your working directory here by pasting where you have located the repository over the file path below
+path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
+path_data <- file.path(path, "data")
+path_code <- file.path(path, "code")
+path_figures <- file.path(path, "figures")
+
 # Builds a LaTeX table of regression output using the stargazer package.
 
 model <- 
-  read_csv(here("data/NLSY97_Incarceration_clean.csv")) %>%
+  read_csv(file.path(path_data, "NLSY97_Incarceration_clean.csv")) %>%
   mutate(incarcerationStatus = ifelse(total_arrests > 0 , 1, 0)) %>%
-  lm(incarcerationStatus ~ race + gender, data = .)
+  glm(incarcerationStatus ~ race + gender, data = ., family = "binomial")
 
 # Here we supply our own standard errors b/c we want to 
 # use heteroskedasticity-robust errors.
@@ -25,8 +31,8 @@ stargazer(
   model,
   se = list(se),
   covariate.labels = covariate.labels,
-  dep.var.labels = "Arrests in 2002",
-  out = here("figures/regress_incarceration_by_racegender.tex"),
+  dep.var.labels = "Likelihood of Being Incarcerated in 2002",
+  out = file.path(path_figures, "regress_incarceration_by_racegender.tex"),
   title = "Regression Output. Omitted category is Black Females.",
   label = "tab:regression"
 )
