@@ -1,11 +1,15 @@
+#Creates the graphical figures for the NLSY97 Incarceration Analysis and saves them to a
+#file in the "figures" folder uing the ggplot2 package
 library(tidyverse)
 library(ggplot2)
 library(knitr)
 library(stargazer)
 library(magrittr)
 library(here)
+#######################################################################################################
 #if you have not run the "AKinclude.R" file, uncomment the path variable below, otherwise if you have set your path previously,
 #the code should function
+#######################################################################################################
 #Set your working directory here by pasting where you have located the repository over the file path below
 #path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
 path_data <- file.path(path, "data")

@@ -26,11 +26,10 @@ librarian::shelf(
   stargazer,
   snakecase
 )
-#######################################################################33
+###########################################################################
 #Set Path for project by pasting working directory here
 path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
-
+###########################################################################
 #Nathan Hattersly Legacy code using the "here() function"
 # tell here where we are so we can use it elsewhere
-#setwd("/Users/amalkadri/Documents/Causal Inference/hidden-curriculum/")
 #here::i_am("AKinclude.R")

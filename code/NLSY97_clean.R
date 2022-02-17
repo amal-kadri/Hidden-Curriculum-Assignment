@@ -3,8 +3,10 @@
 # vignette("colwise")
 # vignette("rowwise")
 
+#######################################################################################################
 #if you have not run the "AKinclude.R" file, uncomment the path variable below, otherwise if you have set your path previously,
 #the code should function
+#######################################################################################################
 #path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
 read_csv(file.path(path, "data", "NLS_Incarceration2002", "NLS_Incarceration2002.csv")) %>%
   

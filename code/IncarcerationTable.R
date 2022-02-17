@@ -1,3 +1,5 @@
+#Creates the table readout for the NLSY97 Incarceration Analysis and saves it to a
+#LaTeX file in the "figures" folder using kableExtra package
 library(tidyverse)
 library(ggplot2)
 library(knitr)
@@ -6,8 +8,10 @@ library(magrittr)
 library(here)
 library(kableExtra)
 
+#######################################################################################################
 #if you have not run the "AKinclude.R" file, uncomment the path variable below, otherwise if you have set your path previously,
 #the code should function
+#######################################################################################################
 #Set your working directory here by pasting where you have located the repository over the file path below
 #path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
 path_data <- file.path(path, "data")
