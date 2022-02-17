@@ -4,9 +4,10 @@ library(knitr)
 library(stargazer)
 library(magrittr)
 library(here)
-
+#if you have not run the "AKinclude.R" file, uncomment the path variable below, otherwise if you have set your path previously,
+#the code should function
 #Set your working directory here by pasting where you have located the repository over the file path below
-path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
+#path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
 path_data <- file.path(path, "data")
 path_code <- file.path(path, "code")
 path_figures <- file.path(path, "figures")

@@ -3,7 +3,10 @@
 # vignette("colwise")
 # vignette("rowwise")
 
-read_csv(here("/Users/amalkadri/Documents/Causal Inference/hidden-curriculum/data/NLS_Incarceration2002/NLS_Incarceration2002.csv")) %>%
+#if you have not run the "AKinclude.R" file, uncomment the path variable below, otherwise if you have set your path previously,
+#the code should function
+#path <- file.path("/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/")
+read_csv(file.path(path, "data", "NLS_Incarceration2002", "NLS_Incarceration2002.csv")) %>%
   
   # refused responses or already incarcerated --> NA
   # starts_with("E") are the columns that hold number of arrests per month of 2002
@@ -20,7 +23,7 @@ read_csv(here("/Users/amalkadri/Documents/Causal Inference/hidden-curriculum/dat
   rowwise() %>%
   mutate(total_arrests = sum(c_across(starts_with("E")), na.rm = TRUE)) %>%
   ungroup() %>%
-
+  
   # recode the gender variable
   mutate(gender = if_else(R0536300 == 1, "Male", "Female")) %>%
   
@@ -36,4 +39,4 @@ read_csv(here("/Users/amalkadri/Documents/Causal Inference/hidden-curriculum/dat
   select(race, gender, total_arrests) %>%
   
   # write to a csv
-  write_csv(here("data/NLSY97_Incarceration_clean.csv"))
+  write_csv(file.path(path, "data", "NLSY97_Incarceration_clean.csv"))
