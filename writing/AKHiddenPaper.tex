@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% these packages let you do math
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% we need these packages for fancy R tables
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{xcolor}
+
+% these packages play with the spacing/margins of the document. Uncomment the commands on lines 16 and 17 to see what they do.
+\usepackage{a4wide}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{parskip}
+%\doublespacing
+%\geometry{margin=1.5in}
+
+% this package helps us with including images. Setting the graphics path makes it easier to refer to things in the \includegraphics command.
+\usepackage{graphicx}
+\graphicspath{ {../figures/} }
+
+% make some hyperlinks using the \href command
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+% set the author, title, and date of the document. \maketitle adds it to the document.
+\author{Amal Kadri}
+\title{Report on NLSY97 Incarceration Data}
+\date{Sping 2022}
+\begin{document}
+\maketitle
+\section{Introduction}
+Below is an analysis of the \href{https://www.nlsinfo.org/investigator/pages/search}{1997-2019 NLS Youth Data} on \texttt{Incarceration}. Most of the data set is fairly good, but unfortunately there were very few observations for \texttt{Mixed Race} individuals in the data set, so most of the results I obtain aren't very useful for that subcategory of individuals, as can be seen below.
+
+\section{Section 1: Graphs}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=.85\textwidth]{incarceration_by_racegender.png}
+    \end{center}
+    \caption{Percentage of Individuals in the Survey who were incarcerated at any point in 2002, broken down by race and gender. Mixed Race proportions should be largely ignored due to small sample size.}
+    \label{fig:graph}
+\end{figure}
+
+\newpage
+\section{Section 2: Table}
+
+\input{/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/figures/incarceration_by_racegender.tex}  
+This table shows a breakdown of the percentage of the individuals in the survey that were incarcerated, broken down by \texttt{Race} and \texttt{Gender}. The percentages for the \texttt{Mixed Race (Non-Hispanic)} category because the sample size for that subcategory is so small (81 individuals, only 1 female of which was incarcerated). That aside, there is a clear trend toward men being incarcerated, with \texttt{Black Men} being almost 8 times as likely to be incarcerated as \texttt{Black Women}. Black individuals seem to be more likely to be incarcerated than other races regardless of gender.
+
+\newpage
+\section{Section 3: Regression}
+
+\input{/Users/amalkadri/Documents/Causal Inference/Hidden-Curriculum-Assignment/figures/regress_incarceration_by_racegender.tex}
+The trend from above continues in the regression table. Computed using a Logit Regression, with Incarceration Status being regressed on \texttt{Race} and \texttt{Gender}. Because the coefficients of the Log-Likelihood function are somewhat difficult to interperet (the model takes the\newline form: \(p/(1-p) = e^\beta_0 + e^\beta_1x_1\)), the magnitude of beta coefficients in the regression output may seem off. For example, the odds of a \texttt{Black Male} being incarcerated are $e^1.66 = 5.26$ times more likely than a \texttt{Black Female}. Similarly, all other races have lower odds of being incarcerated than Blacks (again mostly ignoring the Mixed Race (Non-Hispanic) category for sample-size reasons).
+\end{document}
